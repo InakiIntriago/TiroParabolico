@@ -1,6 +1,9 @@
 from random import randrange
 from turtle import *
 from freegames import vector
+import turtle
+
+turtle.Screen().bgcolor("lime")
 
 ball = vector(-200, -200)
 speed = vector(0, 0)
@@ -40,11 +43,11 @@ def move():
         targets.append(target)
 
     for target in targets:
-        target.x -= 0.5
+        target.x -= 1
 
     if inside(ball):
-        speed.y -= 0.35
-        ball.move(speed)
+        speed.y -= 0.10
+        ball.move(speed*1.5)
 
     dupe = targets.copy()
     targets.clear()
@@ -57,9 +60,9 @@ def move():
 
     for target in targets:
         if not inside(target):
-            return
+            goto (target.x, target.y)
 
-    ontimer(move, 10)
+    ontimer(move, 18)
 
 setup(420, 420, 370, 0)
 hideturtle()
